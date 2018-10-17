@@ -1,6 +1,8 @@
 # GameEngine_Assignment
 An assignment that sets out to create a customisable world generation tool. 
 
+## Introduction
+In this project I aim to create a procedurally generated 3d terrain. This means procedurally generating the mesh.
 ![](Pictures/Example%20Terrain.jpg)
 
 ## References
