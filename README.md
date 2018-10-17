@@ -1,6 +1,8 @@
 # GameEngine_Assignment
 An assignment that sets out to create a customisable world generation tool. 
 
+![](Pictures/Example%20Terrain.jpg)
+
 ## References
 - https://catlikecoding.com/unity/tutorials/noise-derivatives/ //Tutorial (Great starting point)
 - https://www.youtube.com/watch?v=IKB1hWWedMk // Tutorial (Related Java example of using noise terrain generation)
