@@ -7,7 +7,9 @@ In this project I aim to create a procedurally generated 3d terrain. This means 
 
 ## The Goal
 The Goal of the project is to create a procedurally generated world that can be easily edited and changed from the unity editor. I plan on being able to control how mountainous the level is, whether its an island or not, the colours of the different Biomes ect.
+
 ![](Pictures/Procedural%20Island.jpg)
+
 The procedural terrain will be created using Perlin noise at different derrivatives to achive a natural looking landscape.
 ![](Pictures/Terrain%20Example.jpg)
 
