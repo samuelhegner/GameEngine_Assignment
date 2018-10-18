@@ -6,12 +6,12 @@ In this project I aim to create a procedurally generated 3d terrain. This means 
 ![](Pictures/Example%20Terrain.jpg)
 
 ## The Goal
-The Goal of the project is to create a procedurally generated world that can be easily edited and changed from the unity editor. I plan on being able to control how mountainous the level is, whether its an island or not, the colours of the different Biomes ect. The procedural terrain will be created using Perlin noise at different derrivatives to achive a natural looking landscape.
+The Goal of the project is to create a procedurally generated world that can be easily edited and changed from the unity editor. I plan on being able to control how mountainous the level is, whether its an island or not, the colours of the different Biomes ect. The procedural terrain will be created using Perlin noise at different derivatives to achieve a natural looking landscape.
 ![](Pictures/Procedural%20Island.jpg)
 
 
 ## The Difficulty
-In terms of what is going to cause problem in this project, i can foresee a few challenges. The first difficulty will be getting a grasp of being able to shape the custom mesh with the derrivatives/octives of Perlin noise. This however is very well documented and described through many websites and tutorials which will aid when I inevitably get stuck. The second difficulty will be figuring out how to shade the scene to represent a realistic looking landscape. I've never touched writing custom shaders, so hopefully this wont block progress. Finally, I also think that adding custom Unity Editor slider, windows ect. will provide a challenge. Again this will be the first time i have attempted to implement that in any of my projects.
+In terms of what is going to cause problem in this project, I can foresee a few challenges. The first difficulty will be getting a grasp of being able to shape the custom mesh with the derrivatives/octives of Perlin noise. This however is very well documented and described through many websites and tutorials which will aid when I inevitably get stuck. The second difficulty will be figuring out how to shade the scene to represent a realistic looking landscape. I've never touched writing custom shaders, so hopefully this wont block progress. Finally, I also think that adding custom Unity Editor slider, windows ect. will provide a challenge. Again this will be the first time i have attempted to implement that in any of my projects.
 
 ![](Pictures/Terrain%20Example.jpg)
 
