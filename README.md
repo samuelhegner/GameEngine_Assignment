@@ -17,7 +17,7 @@ In terms of what is going to cause problem in this project, I can foresee a few 
 
 ## References
 - https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/perlin-noise-part-2/perlin-noise-computing-derivatives //Handy resource to learn about noise derivatives
-- http://flafla2.github.io/2014/08/09/perlinnoise.html //Explination of Perlin Noise and its applications
+- http://flafla2.github.io/2014/08/09/perlinnoise.html //Explanation of Perlin Noise and its applications
 - https://catlikecoding.com/unity/tutorials/noise-derivatives/ //Tutorial (Great starting point)
 - https://www.youtube.com/watch?v=IKB1hWWedMk // Tutorial (Related Java example of using noise terrain generation)
 - https://gamedevacademy.org/complete-guide-to-procedural-level-generation-in-unity-part-1/ //Tutorial (Unity Related Example)
