@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Spawn_Clouds : MonoBehaviour
 {   
-    public GameObject prefab;
-
-    public Object_Pool pools;
+    Object_Pool pools;
 
     public float spawnRate;
 

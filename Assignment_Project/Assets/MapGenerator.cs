@@ -28,6 +28,7 @@ public class MapGenerator : MonoBehaviour {
 	public Vector2 offset;
 
 	public bool autoUpdate;
+	public bool randomOnStart;
 
 	public AnimationCurve meshHeightCurve;
 
@@ -76,6 +77,10 @@ public class MapGenerator : MonoBehaviour {
 	}
 
 	void Awake(){
+		if(randomOnStart){
+			seed = Random.Range(-1000, 1000);
+			offset = new Vector2(Random.Range(-100, 100), Random.Range(-100, 100));
+		}
 		GenerateMap();
 	}
 }
