@@ -25,7 +25,7 @@ public class Cloud_Behaviour : MonoBehaviour
     ParticleSystem.EmissionModule rainE;
     
     
-    
+    public float hoverDistance;
     
     
     
@@ -178,6 +178,7 @@ public class Cloud_Behaviour : MonoBehaviour
 
 
         if(Physics.Raycast(ray, out hit, 300f, ground)){
+            //gets the hits exact pixel colour
             if(hit.collider.tag.Equals("Ground")){
                 texture = hit.transform.GetComponent<Renderer>().material.mainTexture as Texture2D;
                 Vector2 pixelHit = hit.textureCoord;
@@ -185,6 +186,8 @@ public class Cloud_Behaviour : MonoBehaviour
                 pixelHit.y *= texture.height;
 
                 col = texture.GetPixel((int)pixelHit.x, (int)pixelHit.y);
+
+
             }
         }
 
