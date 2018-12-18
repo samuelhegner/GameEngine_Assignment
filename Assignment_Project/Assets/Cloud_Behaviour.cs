@@ -26,10 +26,12 @@ public class Cloud_Behaviour : MonoBehaviour
     
     
     public float hoverDistance;
+
+    Vector3 hitPoint;
+    float desiredYPos;
     
     
-    
-    public bool rise;
+    //public bool rise;
     public float riseSpeed;
 
     public Texture2D texture;
@@ -137,7 +139,14 @@ public class Cloud_Behaviour : MonoBehaviour
 
 
     void AvoidGround(){
-        if(rise){
+        
+        if(hitPoint != Vector3.zero){
+            Vector3 desiredPos = new Vector3(hitPoint.x, hitPoint.y + hoverDistance, hitPoint.z);
+
+            transform.position = Vector3.Lerp(transform.position, desiredPos, riseSpeed * Time.deltaTime);
+        }
+        
+        /* if(rise){
             float _aboveCloud = transform.position.y + (1f * riseSpeed);
 
             float newYPos = Mathf.Lerp(transform.position.y, _aboveCloud, Time.deltaTime);
@@ -149,7 +158,7 @@ public class Cloud_Behaviour : MonoBehaviour
             float newYPos = Mathf.Lerp(transform.position.y, _belowCloud, Time.deltaTime);
 
             transform.position = new Vector3(transform.position.x, newYPos, transform.position.z);
-        }
+        }*/
     }
 
 
@@ -172,7 +181,7 @@ public class Cloud_Behaviour : MonoBehaviour
     
     
     void SampleColourUnder(){
-        Debug.DrawRay(transform.position, Vector3.down *300f, Color.red);
+        //Debug.DrawRay(transform.position, Vector3.down *300f, Color.red);
 
         ray = new Ray(transform.position, Vector3.down);
 
@@ -187,8 +196,10 @@ public class Cloud_Behaviour : MonoBehaviour
 
                 col = texture.GetPixel((int)pixelHit.x, (int)pixelHit.y);
 
-
+                hitPoint = hit.point;
             }
+        }else{
+            hitPoint = new Vector3();
         }
 
     }
@@ -208,11 +219,11 @@ public class Cloud_Behaviour : MonoBehaviour
     
     
     
-    void OnTriggerStay(Collider other){
+    /* void OnTriggerStay(Collider other){
         if(other.tag == "Ground"){
             rise = true;
         }
-    }
+    }*/
 
     
     
@@ -233,9 +244,9 @@ public class Cloud_Behaviour : MonoBehaviour
     
     
     
-    void OnTriggerExit(Collider other){
+    /* void OnTriggerExit(Collider other){
         if(other.tag =="Ground"){
             rise = false;
         }
-    }
+    }*/
 }
