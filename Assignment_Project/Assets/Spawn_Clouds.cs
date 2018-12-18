@@ -6,17 +6,14 @@ public class Spawn_Clouds : MonoBehaviour
 {   
     public GameObject prefab;
 
+    public Object_Pool pools;
+
     public float spawnRate;
-    // Start is called before the first frame update
+
     void Start()
     {
+        pools = Object_Pool.Instance;
         StartCoroutine(SpawnCloud());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator SpawnCloud(){
@@ -25,7 +22,7 @@ public class Spawn_Clouds : MonoBehaviour
 
             Vector3 localSpawn = transform.TransformPoint(spawnPoint);
 
-            Instantiate(prefab, localSpawn, transform.rotation, transform);
+            pools.SpawnFromPool("Cloud", localSpawn, transform.rotation);
             yield return new WaitForSeconds(spawnRate);
         }
 
