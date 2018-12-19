@@ -37,6 +37,9 @@ public class MapGenerator : MonoBehaviour {
 	Object_Pool pools;
 
 
+	//tree variables
+	[Range(0, 300)]
+	public float numberOfTrees;
 
 	public void GenerateMap(){
 		float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize, mapChunkSize, seed, noiseScale, octaves, persistance, lacunarity, offset);
@@ -92,8 +95,9 @@ public class MapGenerator : MonoBehaviour {
 
 
 		// Tree spawning saved for a later date
-		// Can't think of a good way to place them on the map
 
+		Mesh mesh = GameObject.Find("Mesh").GetComponent<MeshFilter>().sharedMesh;
+		pools.SpawnFromPool("Tree", mesh.vertices[0] * 10f, Quaternion.identity);
 
 
 		//float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize, mapChunkSize, seed, noiseScale, octaves, persistance, lacunarity, offset);
