@@ -36,10 +36,12 @@ public class MapGenerator : MonoBehaviour {
 
 	Object_Pool pools;
 
+	public GameObject treePrefab;
+
 
 	//tree variables
-	[Range(0, 300)]
-	public float numberOfTrees;
+	[Range(0, 5000)]
+	public int numberOfTrees;
 
 	public void GenerateMap(){
 		float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize, mapChunkSize, seed, noiseScale, octaves, persistance, lacunarity, offset);
@@ -108,8 +110,10 @@ public class MapGenerator : MonoBehaviour {
 
 		float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize, mapChunkSize, seed, noiseScale, octaves, persistance, lacunarity, offset);
 
-		// Tree spawning saved for a later date
-
+		
+		
+		
+		// Tree spawning
 		Mesh mesh = GameObject.Find("Mesh").GetComponent<MeshFilter>().sharedMesh;
 		pools.SpawnFromPool("Tree", mesh.vertices[0] * 10f, Quaternion.identity);
 		
@@ -120,25 +124,27 @@ public class MapGenerator : MonoBehaviour {
 				treeRegions++;
 			}
 		}
+
+
 		
+
+
+
 		int dividedTreeCount = Mathf.FloorToInt(numberOfTrees/treeRegions);
+
 		for(int i = 0; i < regions.Length; i++){
 			for(int y = 0; y < mapChunkSize; y ++){
             	for(int x = 0; x < mapChunkSize; x++){
-					
-					//int treesPlaced = 0;
-					
+										
 					float ran = Random.Range(0, 10);
 					
 					if(i == 0){
 						if(regions[i].trees){
 							if(noiseMap[x,y] < regions[i].height && noiseMap[x,y] > 0){
 								
-								if(ran < 1 /* && treesPlaced < dividedTreeCount*/){
-									pools.SpawnFromPool("Tree", mesh.vertices[((y * mapChunkSize)+x)] * 10, Quaternion.identity);
-									//treesPlaced ++;
+								if(ran < 1){
+									Instantiate(treePrefab, mesh.vertices[((y * mapChunkSize)+x)] * 10, Quaternion.identity, GameObject.Find("Game_Manager").transform);
 								}
-
 							}
 						}
 
@@ -147,27 +153,15 @@ public class MapGenerator : MonoBehaviour {
 						if(regions[i].trees){
 							if(noiseMap[x,y] < regions[i].height && noiseMap[x,y] > regions[i-1].height){
 								
-								if(ran < 1 /* && treesPlaced < dividedTreeCount*/){
-									pools.SpawnFromPool("Tree", mesh.vertices[((y * mapChunkSize)+x)] * 10, Quaternion.identity);
-									//treesPlaced ++;
+								if(ran < 1){
+									Instantiate(treePrefab, mesh.vertices[((y * mapChunkSize)+x)] * 10, Quaternion.identity, GameObject.Find("Game_Manager").transform);
 								}
-
 							}
 						}
 					}
 				}
             }
         }
-
-
-		//float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize, mapChunkSize, seed, noiseScale, octaves, persistance, lacunarity, offset);
-		//Mesh mesh = GameObject.Find("Mesh").GetComponent<MeshFilter>().mesh;
-
-		//for(int i = 0; i < mesh.vertices.Length; i ++){
-		//	float vertexHeight = mesh.vertices[i].y;
-			
-		//	pools.SpawnFromPool("Tree", mesh.vertices[i], Quaternion.identity);
-		//}
 	}
 }
 
@@ -184,4 +178,6 @@ public struct TerrainType
 
 	public float minRange;
 	public float maxRange;
+
+	public List<GameObject> treeList;
 }
