@@ -152,36 +152,43 @@ public class MapGenerator : MonoBehaviour
 
         for (int i = 0; i < regions.Length; i++)
         {
-			if (regions[i].trees)
+            if (regions[i].trees)
             {
-				for (int y = 0; y < mapChunkSize; y++)
-            	{
-                	for (int x = 0; x < mapChunkSize; x++)
-                	{
-						if (i == 0)
-                    	{
-							if (noiseMap[x, y] < regions[i].height && noiseMap[x, y] > 0){
-								float ran = Random.Range(0, 10);
-								if (ran < 1 /*&& regions[i].treeList.Count < dividedTreeCount*/)
-                                {
-                                    GameObject treeObj = Instantiate(treePrefab, mesh.vertices[((y * mapChunkSize) + x)] * 10, Quaternion.identity, GameObject.Find("Game_Manager").transform);
-                                    regions[i].treeList.Add(treeObj);
-                                }
-							}
-						}else{
-							if (noiseMap[x, y] < regions[i].height && noiseMap[x, y] > regions[i - 1].height)
+                while (regions[i].treeList.Count < dividedTreeCount)
+                {
+                    for (int y = 0; y < mapChunkSize; y++)
+                    {
+                        for (int x = 0; x < mapChunkSize; x++)
+                        {
+                            if (i == 0)
                             {
-								float ran = Random.Range(0, 10);
-                                if (ran < 1 /*&& regions[i].treeList.Count < dividedTreeCount*/)
+                                if (noiseMap[x, y] < regions[i].height && noiseMap[x, y] > 0)
                                 {
-                                    GameObject treeObj = Instantiate(treePrefab, mesh.vertices[((y * mapChunkSize) + x)] * 10, Quaternion.identity, GameObject.Find("Game_Manager").transform);
-                                    regions[i].treeList.Add(treeObj);
+                                    float ran = Random.Range(0, 1000);
+                                    if (ran < 1 && regions[i].treeList.Count < dividedTreeCount)
+                                    {
+                                        GameObject treeObj = Instantiate(treePrefab, mesh.vertices[((y * mapChunkSize) + x)] * 10, Quaternion.identity, GameObject.Find("Game_Manager").transform);
+                                        regions[i].treeList.Add(treeObj);
+                                    }
                                 }
                             }
-						}
-					}
-				}
-			}
+                            else
+                            {
+                                if (noiseMap[x, y] < regions[i].height && noiseMap[x, y] > regions[i - 1].height)
+                                {
+                                    float ran = Random.Range(0, 1000);
+                                    if (ran < 1 && regions[i].treeList.Count < dividedTreeCount)
+                                    {
+                                        GameObject treeObj = Instantiate(treePrefab, mesh.vertices[((y * mapChunkSize) + x)] * 10, Quaternion.identity, GameObject.Find("Game_Manager").transform);
+                                        regions[i].treeList.Add(treeObj);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
         }
     }
 }
