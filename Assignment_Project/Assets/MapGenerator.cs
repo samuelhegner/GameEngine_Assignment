@@ -34,6 +34,8 @@ public class MapGenerator : MonoBehaviour {
 
 	public TerrainType[] regions;
 
+	Object_Pool pools;
+
 
 
 	public void GenerateMap(){
@@ -46,6 +48,7 @@ public class MapGenerator : MonoBehaviour {
 				float currentHeight = noiseMap[x,y];
 
 				for(int i = 0; i < regions.Length; i ++){
+
 					if(currentHeight <= regions[i].height){
 						colourMap[y *mapChunkSize +x] = regions [i].colour;
 						break;
@@ -82,12 +85,36 @@ public class MapGenerator : MonoBehaviour {
 			offset = new Vector2(Random.Range(-100, 100), Random.Range(-100, 100));
 		}
 		GenerateMap();
+		pools = Object_Pool.Instance;
+	}
+
+	void Start(){
+
+
+		// Tree spawning saved for a later date
+		// Can't think of a good way to place them on the map
+
+
+
+		//float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize, mapChunkSize, seed, noiseScale, octaves, persistance, lacunarity, offset);
+		//Mesh mesh = GameObject.Find("Mesh").GetComponent<MeshFilter>().mesh;
+
+		//for(int i = 0; i < mesh.vertices.Length; i ++){
+		//	float vertexHeight = mesh.vertices[i].y;
+			
+		//	pools.SpawnFromPool("Tree", mesh.vertices[i], Quaternion.identity);
+		//}
 	}
 }
+
+
+
 [System.Serializable]
 public struct TerrainType
 {
 	public string name;
 	public float height;
 	public Color colour;
+
+	public bool trees;
 }
