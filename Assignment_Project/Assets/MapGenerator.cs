@@ -120,21 +120,36 @@ public class MapGenerator : MonoBehaviour {
 				treeRegions++;
 			}
 		}
-		float dividedTreeCount = numberOfTrees/treeRegions;
-
-		for(int y = 0; y < mapChunkSize; y ++){
-            for(int x = 0; x < mapChunkSize; x++){
-				for(int i = 0; i < regions.Length; i++){
+		
+		int dividedTreeCount = Mathf.FloorToInt(numberOfTrees/treeRegions);
+		for(int i = 0; i < regions.Length; i++){
+			for(int y = 0; y < mapChunkSize; y ++){
+            	for(int x = 0; x < mapChunkSize; x++){
+					
+					//int treesPlaced = 0;
+					
+					float ran = Random.Range(0, 10);
 					
 					if(i == 0){
+						if(regions[i].trees){
+							if(noiseMap[x,y] < regions[i].height && noiseMap[x,y] > 0){
+								
+								if(ran < 1 /* && treesPlaced < dividedTreeCount*/){
+									pools.SpawnFromPool("Tree", mesh.vertices[((y * mapChunkSize)+x)] * 10, Quaternion.identity);
+									//treesPlaced ++;
+								}
+
+							}
+						}
+
 
 					}else{
 						if(regions[i].trees){
 							if(noiseMap[x,y] < regions[i].height && noiseMap[x,y] > regions[i-1].height){
 								
-								float ran = Random.Range(0, 10);
-								if(ran < 1){
+								if(ran < 1 /* && treesPlaced < dividedTreeCount*/){
 									pools.SpawnFromPool("Tree", mesh.vertices[((y * mapChunkSize)+x)] * 10, Quaternion.identity);
+									//treesPlaced ++;
 								}
 
 							}
