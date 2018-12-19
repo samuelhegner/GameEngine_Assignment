@@ -134,7 +134,7 @@ MonoBehaviour:
   snow: 0
   snowS: {fileID: 7034975180023578323}
   rainS: {fileID: 7466353444043828921}
-  hoverDistance: 100
+  hoverDistance: 120
   riseSpeed: 2
   texture: {fileID: 0}
   col: {r: 0, g: 0, b: 0, a: 0}

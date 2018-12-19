@@ -48,7 +48,7 @@ public class Cloud_Behaviour : MonoBehaviour
     public GameObject model;
 
 
-    
+    Spawn_Clouds spawner;
 
 
     RaycastHit hit;
@@ -64,6 +64,8 @@ public class Cloud_Behaviour : MonoBehaviour
         rainE = rainS.emission;
         snowE = snowS.emission;
         snow = false;
+
+        spawner = GameObject.Find("Cloud Generator").GetComponent<Spawn_Clouds>();
     }
 
     void Update()
@@ -102,7 +104,7 @@ public class Cloud_Behaviour : MonoBehaviour
             rainE.rateOverTime = 0;
         }
 
-        if(transform.position.y > 160f){
+        if(transform.position.y > spawner.snowFallLine){
             snow = true;
         }else{
             snow = false;

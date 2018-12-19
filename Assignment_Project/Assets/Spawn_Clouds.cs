@@ -7,6 +7,8 @@ public class Spawn_Clouds : MonoBehaviour
     Object_Pool pools;
 
     public float spawnRate;
+    [Range(100, 200)]
+    public float snowFallLine;
 
     void Start()
     {
