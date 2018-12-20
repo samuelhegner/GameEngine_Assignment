@@ -21,3 +21,4 @@ I got help with the terrain generation from the lectures and youtube tutorials. 
 I’m most proud of the clouds and the forest mainly because I was able to builds of tutorials and adjust/modify them to suit me. I was able to do things like sample colours using raycast for the clouds, i was able to procedurally place object on the mesh vertices based on regions, work with the post processing stack, basic obstacle avoidance with raycasts, particle systems with particle collisions. Also I feel like from now on I can expand the procedural world, add more things to spawn and start adding ai and other behaviours to spawnable things. I also leaned to Object pool and to use more oop concepts in unity
 
 ## Video
+[![YouTube](http://img.https://youtu.be/9A_KPoW-GiQ/0.jpg)](https://youtu.be/9A_KPoW-GiQ)
